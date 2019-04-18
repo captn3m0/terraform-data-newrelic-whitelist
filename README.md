@@ -42,6 +42,10 @@ resource "aws_security_group_rule" "allow_all_to_newrelic" {
 | webhook\_cidrs       |                                                                                     |
 
 
+# Versioning
+
+This module is versioned as per the New Relic "Last Updated" date on [the docs website](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/networks). The versioning scheme is `YYYY.MM.DD` (with zeros for padding).
+
 
 # LICENSE
 
