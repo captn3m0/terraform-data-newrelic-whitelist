@@ -47,10 +47,17 @@ locals {
     ]
   }
 
-  ticketing_and_webhooks = [
+  ticketing_and_webhooks_us = [
     "50.31.164.0/24",
     "162.247.240.0/22",
   ]
+
+  ticketing_and_webhooks_eu = [
+    "158.177.65.64/29",
+    "159.122.103.184/29",
+    "161.156.125.32/28",
+  ]
+
   # Documented at https://docs.newrelic.com/docs/synthetics/new-relic-synthetics/administration/synthetics-public-minion-ips#locations-labels
   # https://s3.amazonaws.com/nr-synthetics-assets/nat-ip-dnsname/production/ip.json
   synthetics_us = [

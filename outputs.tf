@@ -104,9 +104,33 @@ output "synthetics_cidrs_eu" {
 }
 
 output "ticketing_cidrs" {
-  value = ["${local.ticketing_and_webhooks}"]
+  description = "Third-party ticketing integrations will be sent from these CIDRs"
+  value       = ["${concat(local.ticketing_and_webhooks_us, local.ticketing_and_webhooks_eu)}"]
 }
 
+output "ticketing_cidrs_us" {
+  description = "Same as ticketing_cidrs, but exclusively for US accounts"
+  value       = ["${local.ticketing_and_webhooks_us}"]
+}
+
+output "ticketing_cidrs_eu" {
+  description = "Same as ticketing_cidrs, but exclusively for EU accounts"
+  value       = ["${local.ticketing_and_webhooks_eu}"]
+}
+
+# The webhook_* outputs are same as ticketing_
+
 output "webhook_cidrs" {
-  value = ["${local.ticketing_and_webhooks}"]
+  description = "New Relic-generated webhooks for alert policies will be sent from these CIDRs"
+  value       = ["${concat(local.ticketing_and_webhooks_us, local.ticketing_and_webhooks_eu)}"]
+}
+
+output "webhook_cidrs_us" {
+  description = "Same as webhook_cidrs, but exclusively for US accounts"
+  value       = ["${local.ticketing_and_webhooks_us}"]
+}
+
+output "webhook_cidrs_eu" {
+  description = "Same as webhook_cidrs, but exclusively for EU accounts"
+  value       = ["${local.ticketing_and_webhooks_eu}"]
 }
