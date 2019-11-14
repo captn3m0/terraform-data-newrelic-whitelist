@@ -58,6 +58,23 @@ locals {
     "161.156.125.32/28",
   ]
 
+  synthetics_private_domains = {
+    us = "synthetics-horde.nr-data.net"
+    eu = "synthetics-horde.eu01.nr-data.net"
+  }
+
+  synthetics_private_ips = {
+    us = [
+      "13.248.153.51",
+      "76.223.21.185",
+    ]
+
+    eu = [
+      "185.221.86.57",
+      "185.221.86.25",
+    ]
+  }
+
   # Documented at https://docs.newrelic.com/docs/synthetics/new-relic-synthetics/administration/synthetics-public-minion-ips#locations-labels
   # https://s3.amazonaws.com/nr-synthetics-assets/nat-ip-dnsname/production/ip.json
   synthetics_us = [

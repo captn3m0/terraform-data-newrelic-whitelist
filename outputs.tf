@@ -78,6 +78,36 @@ output "synthetics_ips" {
   ]
 }
 
+output "synthetics_private_ips_us" {
+  value       = ["${local.synthetics_private_ips["us"]}"]
+  description = "Synthetic Private Minion endpoint IPs for US accounts"
+}
+
+output "synthetics_private_domains_us" {
+  value       = ["${local.synthetics_private_domains["us"]}"]
+  description = "Synthetic Private Minion endpoint  Domains for US accounts"
+}
+
+output "synthetics_private_cidrs_us" {
+  value       = ["${formatlist("%s/32", local.synthetics_private_ips["us"])}"]
+  description = "Synthetic Private Minion endpoint  IPs as CIDR ranges for US accounts"
+}
+
+output "synthetics_private_ips_eu" {
+  value       = ["${local.synthetics_private_ips["eu"]}"]
+  description = "Synthetic Private Minion endpoint  IPs for eu accounts"
+}
+
+output "synthetics_private_domains_eu" {
+  value       = ["${local.synthetics_private_domains["eu"]}"]
+  description = "Synthetic Private Minion endpoint Domains for EU accounts"
+}
+
+output "synthetics_private_cidrs_eu" {
+  value       = ["${formatlist("%s/32", local.synthetics_private_ips["eu"])}"]
+  description = "Synthetic Private Minion endpoint IPs as CIDR ranges for EU accounts"
+}
+
 output "synthetics_cidrs" {
   description = "List of New Relic Synthetic Minion IPs as /32 CIDR for both US and EU accounts"
   value       = ["${formatlist("%s/32", concat(local.synthetics_us, local.synthetics_eu))}"]
@@ -88,7 +118,7 @@ output "synthetics_ips_us" {
   value       = ["${local.synthetics_us}"]
 }
 
-output "synthetics_cidr_us" {
+output "synthetics_cidrs_us" {
   description = "List of New Relic Synthetic Minion IPs as /32 CIDR for US accounts"
   value       = ["${formatlist("%s/32", local.synthetics_us)}"]
 }
