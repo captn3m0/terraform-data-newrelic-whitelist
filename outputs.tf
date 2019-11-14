@@ -70,10 +70,97 @@ output "mobile_domains_eu" {
   value = ["${local.mobile["eu"]}"]
 }
 
-output "ticketing_cidrs" {
-  value = ["${local.ticketing_and_webhooks}"]
+output "synthetics_ips" {
+  description = "List of New Relic Synthetic Minion IPs for both US and EU accounts"
+
+  value = [
+    "${concat(local.synthetics_us, local.synthetics_eu)}",
+  ]
 }
 
+output "synthetics_private_ips_us" {
+  value       = ["${local.synthetics_private_ips["us"]}"]
+  description = "Synthetic Private Minion endpoint IPs for US accounts"
+}
+
+output "synthetics_private_domains_us" {
+  value       = ["${local.synthetics_private_domains["us"]}"]
+  description = "Synthetic Private Minion endpoint  Domains for US accounts"
+}
+
+output "synthetics_private_cidrs_us" {
+  value       = ["${formatlist("%s/32", local.synthetics_private_ips["us"])}"]
+  description = "Synthetic Private Minion endpoint  IPs as CIDR ranges for US accounts"
+}
+
+output "synthetics_private_ips_eu" {
+  value       = ["${local.synthetics_private_ips["eu"]}"]
+  description = "Synthetic Private Minion endpoint  IPs for eu accounts"
+}
+
+output "synthetics_private_domains_eu" {
+  value       = ["${local.synthetics_private_domains["eu"]}"]
+  description = "Synthetic Private Minion endpoint Domains for EU accounts"
+}
+
+output "synthetics_private_cidrs_eu" {
+  value       = ["${formatlist("%s/32", local.synthetics_private_ips["eu"])}"]
+  description = "Synthetic Private Minion endpoint IPs as CIDR ranges for EU accounts"
+}
+
+output "synthetics_cidrs" {
+  description = "List of New Relic Synthetic Minion IPs as /32 CIDR for both US and EU accounts"
+  value       = ["${formatlist("%s/32", concat(local.synthetics_us, local.synthetics_eu))}"]
+}
+
+output "synthetics_ips_us" {
+  description = "List of New Relic Synthetic Minion IPs for US accounts"
+  value       = ["${local.synthetics_us}"]
+}
+
+output "synthetics_cidrs_us" {
+  description = "List of New Relic Synthetic Minion IPs as /32 CIDR for US accounts"
+  value       = ["${formatlist("%s/32", local.synthetics_us)}"]
+}
+
+output "synthetics_ips_eu" {
+  description = "List of New Relic Synthetic Minion IPs for EU accounts"
+  value       = ["$${local.synthetics_eu}"]
+}
+
+output "synthetics_cidrs_eu" {
+  description = "List of New Relic Synthetic Minion IPs as /32 CIDR for EU accounts"
+  value       = ["${formatlist("%s/32", local.synthetics_eu)}"]
+}
+
+output "ticketing_cidrs" {
+  description = "Third-party ticketing integrations will be sent from these CIDRs"
+  value       = ["${concat(local.ticketing_and_webhooks_us, local.ticketing_and_webhooks_eu)}"]
+}
+
+output "ticketing_cidrs_us" {
+  description = "Same as ticketing_cidrs, but exclusively for US accounts"
+  value       = ["${local.ticketing_and_webhooks_us}"]
+}
+
+output "ticketing_cidrs_eu" {
+  description = "Same as ticketing_cidrs, but exclusively for EU accounts"
+  value       = ["${local.ticketing_and_webhooks_eu}"]
+}
+
+# The webhook_* outputs are same as ticketing_
+
 output "webhook_cidrs" {
-  value = ["${local.ticketing_and_webhooks}"]
+  description = "New Relic-generated webhooks for alert policies will be sent from these CIDRs"
+  value       = ["${concat(local.ticketing_and_webhooks_us, local.ticketing_and_webhooks_eu)}"]
+}
+
+output "webhook_cidrs_us" {
+  description = "Same as webhook_cidrs, but exclusively for US accounts"
+  value       = ["${local.ticketing_and_webhooks_us}"]
+}
+
+output "webhook_cidrs_eu" {
+  description = "Same as webhook_cidrs, but exclusively for EU accounts"
+  value       = ["${local.ticketing_and_webhooks_eu}"]
 }
