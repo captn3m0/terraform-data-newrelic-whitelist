@@ -70,6 +70,39 @@ output "mobile_domains_eu" {
   value = ["${local.mobile["eu"]}"]
 }
 
+output "synthetics_ips" {
+  description = "List of New Relic Synthetic Minion IPs for both US and EU accounts"
+
+  value = [
+    "${concat(local.synthetics_us, local.synthetics_eu)}",
+  ]
+}
+
+output "synthetics_cidrs" {
+  description = "List of New Relic Synthetic Minion IPs as /32 CIDR for both US and EU accounts"
+  value       = ["${formatlist("%s/32", concat(local.synthetics_us, local.synthetics_eu))}"]
+}
+
+output "synthetics_ips_us" {
+  description = "List of New Relic Synthetic Minion IPs for US accounts"
+  value       = ["${local.synthetics_us}"]
+}
+
+output "synthetics_cidr_us" {
+  description = "List of New Relic Synthetic Minion IPs as /32 CIDR for US accounts"
+  value       = ["${formatlist("%s/32", local.synthetics_us)}"]
+}
+
+output "synthetics_ips_eu" {
+  description = "List of New Relic Synthetic Minion IPs for EU accounts"
+  value       = ["$${local.synthetics_eu}"]
+}
+
+output "synthetics_cidrs_eu" {
+  description = "List of New Relic Synthetic Minion IPs as /32 CIDR for EU accounts"
+  value       = ["${formatlist("%s/32", local.synthetics_eu)}"]
+}
+
 output "ticketing_cidrs" {
   value = ["${local.ticketing_and_webhooks}"]
 }
