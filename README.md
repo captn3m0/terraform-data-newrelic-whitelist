@@ -1,6 +1,6 @@
-# terraform-data-newrelic-whitelist ![](https://img.shields.io/badge/license-MIT-blue.svg)
+# terraform-data-newrelic-whitelist ![](https://img.shields.io/badge/license-MIT-blue.svg) ![GitHub issues](https://img.shields.io/github/issues/captn3m0/muse-dl) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-This module provides lists of the IP addresses and domains used by New Relic collectors (for example, https://collector.newrelic.com) for communicating with the New Relic agent installed on your server.
+This module provides lists of the IP addresses and domains used by various New Relic agents and services (for example, https://collector.newrelic.com) for communicating with the New Relic agent installed on your server.
 
 This is maintained against https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/networks
 
@@ -29,6 +29,9 @@ resource "aws_security_group_rule" "allow_all_to_newrelic" {
 | apm_cidrs                     | List of all New Relic APM CIDRs. Whitelist for egress against 443                   |
 | apm_cidrs_eu                  | List of New Relic APM CIDRs (EU). Whitelist for egress against 443                  |
 | apm_cidrs_us                  | List of New Relic APM CIDRs (US). Whitelist for egress against 443                  |
+| apm_domains                   | List of all New Relic APM Domains. Whitelist for egress against 443                 |
+| apm_domains_eu                | List of New Relic APM Domains (EU). Whitelist for egress against 443                |
+| apm_domains_us                | List of New Relic APM Domains (US). Whitelist for egress against 443                |
 | browser_domains               | List of all New Relic Browser application domains.                                  |
 | browser_domains_eu            | List of New Relic Browser application domains (EU).                                 |
 | browser_domains_us            | List of New Relic Browser application domains (US).                                 |
@@ -60,6 +63,8 @@ resource "aws_security_group_rule" "allow_all_to_newrelic" {
 # Versioning
 
 This module is versioned as per the New Relic "Last Updated" date on [the docs website](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/networks). The versioning scheme is `YYYY.MM.DD` (with zeros for padding). Changes are usually backwards compatible, but if any breaking changes are made (such as output name changes) between released versions, they will be noted below and in the release notes.
+
+If another release has to be made against the same date, they will be suffixed with a `-1`, or `-2` etc.
 
 # LICENSE
 
