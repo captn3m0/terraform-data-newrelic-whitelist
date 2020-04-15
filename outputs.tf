@@ -1,78 +1,80 @@
 output "apm_cidrs" {
   description = "List of all New Relic APM CIDRs. Whitelist for egress against 443"
-
-  value = ["${concat(local.apm["us"], local.apm["eu"])}"]
+  value       = ["${concat(local.apm["us"], local.apm["eu"])}"]
 }
 
 output "apm_cidrs_us" {
   description = "List of New Relic APM CIDRs (US). Whitelist for egress against 443"
-
-  value = ["${local.apm["us"]}"]
+  value       = ["${local.apm["us"]}"]
 }
 
 output "apm_cidrs_eu" {
   description = "List of New Relic APM CIDRs (EU). Whitelist for egress against 443"
+  value       = ["${local.apm["eu"]}"]
+}
 
-  value = ["${local.apm["eu"]}"]
+output "apm_domains" {
+  description = "In order to report data to New Relic, Infrastructure needs outbound access to these domains (For both US and EU accounts)"
+  value       = ["${concat(local.apm_domains["us"], local.apm_domains["eu"])}"]
+}
+
+output "apm_domains_us" {
+  description = "In order to report data to New Relic, Infrastructure needs outbound access to these domains (For US accounts)"
+  value       = ["${local.apm_domains["us"]}"]
+}
+
+output "apm_domains_eu" {
+  description = "In order to report data to New Relic, Infrastructure needs outbound access to these domains (For EU accounts)"
+  value       = ["${local.apm_domains["eu"]}"]
 }
 
 output "infra_cidrs" {
   description = "List of all New Relic Infrastructure Agent CIDRs. Whitelist for egress against 443"
-
-  value = ["${concat(local.infra["us"], local.infra["eu"])}"]
+  value       = ["${concat(local.infra["us"], local.infra["eu"])}"]
 }
 
 output "infra_cidrs_us" {
   description = "List of New Relic Infrastructure Agent CIDRs (US). Whitelist for egress against 443"
-
-  value = ["${local.infra["us"]}"]
+  value       = ["${local.infra["us"]}"]
 }
 
 output "infra_cidrs_eu" {
   description = "List of New Relic Infrastructure Agent CIDRs (EU). Whitelist for egress against 443"
-
-  value = ["${local.infra["eu"]}"]
+  value       = ["${local.infra["eu"]}"]
 }
 
 output "browser_domains" {
   description = "List of all New Relic Browser application domains."
-
-  value = ["${concat(local.browser["us"], local.browser["eu"])}"]
+  value       = ["${concat(local.browser["us"], local.browser["eu"])}"]
 }
 
 output "browser_domains_us" {
   description = "List of New Relic Browser application domains (US)."
-
-  value = ["${local.browser["us"]}"]
+  value       = ["${local.browser["us"]}"]
 }
 
 output "browser_domains_eu" {
   description = "List of New Relic Browser application domains (EU)."
-
-  value = ["${local.browser["eu"]}"]
+  value       = ["${local.browser["eu"]}"]
 }
 
 output "mobile_domains" {
   description = "List of all New Relic Mobile Application domains."
-
-  value = ["${concat(local.mobile["us"], local.mobile["eu"])}"]
+  value       = ["${concat(local.mobile["us"], local.mobile["eu"])}"]
 }
 
 output "mobile_domains_us" {
   description = "List of New Relic Mobile Application domains (US)."
-
-  value = ["${local.mobile["us"]}"]
+  value       = ["${local.mobile["us"]}"]
 }
 
 output "mobile_domains_eu" {
   description = "List of New Relic Mobile application domains (EU)."
-
-  value = ["${local.mobile["eu"]}"]
+  value       = ["${local.mobile["eu"]}"]
 }
 
 output "synthetics_ips" {
   description = "List of New Relic Synthetic Minion IPs for both US and EU accounts"
-
   value = [
     "${concat(local.synthetics_us, local.synthetics_eu)}",
   ]

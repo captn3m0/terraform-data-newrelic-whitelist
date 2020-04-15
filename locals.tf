@@ -10,6 +10,20 @@ locals {
     ]
   }
 
+  apm_domains = {
+    us = [
+      "infra-api.newrelic.com",
+      "identity-api.newrelic.com",
+      "infrastructure-command-api.newrelic.com",
+    ]
+
+    eu = [
+      "infra-api.eu01.nr-data.net",
+      "identity-api.eu.newrelic.com",
+      "infrastructure-command-api.eu.newrelic.com",
+    ]
+  }
+
   infra = {
     us = [
       "50.31.164.0/24",
