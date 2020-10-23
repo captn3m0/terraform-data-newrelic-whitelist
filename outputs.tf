@@ -13,19 +13,34 @@ output "apm_cidrs_eu" {
   value       = ["${local.apm["eu"]}"]
 }
 
-output "apm_domains" {
+output "apm_agent_domains" {
+  description = "Wildcard domain endpoints used by APM agents (For both US and EU accounts)"
+  value       = ["${concat(local.apm_agent_domains["us"], local.apm_agent_domains["eu"])}"]
+}
+
+output "apm_agent_domains_us" {
+  description = "Wildcard domain endpoints used by APM agents (For US accounts)"
+  value       = ["${local.apm_agent_domains["us"]}"]
+}
+
+output "apm_agent_domains_eu" {
+  description = "Wildcard domain endpoints used by APM agents (For EU accounts)"
+  value       = ["${local.apm_agent_domains["eu"]}"]
+}
+
+output "infra_agent_domains" {
   description = "In order to report data to New Relic, Infrastructure needs outbound access to these domains (For both US and EU accounts)"
-  value       = ["${concat(local.apm_domains["us"], local.apm_domains["eu"])}"]
+  value       = ["${concat(local.infra_agent_domains["us"], local.infra_agent_domains["eu"])}"]
 }
 
-output "apm_domains_us" {
+output "infra_agent_domains_us" {
   description = "In order to report data to New Relic, Infrastructure needs outbound access to these domains (For US accounts)"
-  value       = ["${local.apm_domains["us"]}"]
+  value       = ["${local.infra_agent_domains["us"]}"]
 }
 
-output "apm_domains_eu" {
+output "infra_agent_domains_eu" {
   description = "In order to report data to New Relic, Infrastructure needs outbound access to these domains (For EU accounts)"
-  value       = ["${local.apm_domains["eu"]}"]
+  value       = ["${local.infra_agent_domains["eu"]}"]
 }
 
 output "infra_cidrs" {
@@ -136,33 +151,33 @@ output "synthetics_cidrs_eu" {
 }
 
 output "ticketing_cidrs" {
-  description = "Third-party ticketing integrations will be sent from these CIDRs"
-  value       = ["${concat(local.ticketing_and_webhooks_us, local.ticketing_and_webhooks_eu)}"]
+  description = "Third-party ticketing integrations will be sent from these CIDRs (US and EU)"
+  value       = ["${concat(local.api_us, local.api_eu)}"]
 }
 
 output "ticketing_cidrs_us" {
-  description = "Same as ticketing_cidrs, but exclusively for US accounts"
-  value       = ["${local.ticketing_and_webhooks_us}"]
+  description = "Third-party ticketing integrations will be sent from these CIDRs (US only)"
+  value       = ["${local.api_us}"]
 }
 
 output "ticketing_cidrs_eu" {
-  description = "Same as ticketing_cidrs, but exclusively for EU accounts"
-  value       = ["${local.ticketing_and_webhooks_eu}"]
+  description = "Third-party ticketing integrations will be sent from these CIDRs (EU only)"
+  value       = ["${local.api_eu}"]
 }
 
 # The webhook_* outputs are same as ticketing_
 
 output "webhook_cidrs" {
-  description = "New Relic-generated webhooks for alert policies will be sent from these CIDRs"
-  value       = ["${concat(local.ticketing_and_webhooks_us, local.ticketing_and_webhooks_eu)}"]
+  description = "New Relic-generated webhooks for alert policies will be sent from these CIDRs (US and EU)"
+  value       = ["${concat(local.api_us, local.api_eu)}"]
 }
 
 output "webhook_cidrs_us" {
   description = "Same as webhook_cidrs, but exclusively for US accounts"
-  value       = ["${local.ticketing_and_webhooks_us}"]
+  value       = ["${local.api_us}"]
 }
 
 output "webhook_cidrs_eu" {
   description = "Same as webhook_cidrs, but exclusively for EU accounts"
-  value       = ["${local.ticketing_and_webhooks_eu}"]
+  value       = ["${local.api_eu}"]
 }

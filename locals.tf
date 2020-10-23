@@ -1,7 +1,6 @@
 locals {
   apm = {
     us = [
-      "50.31.164.0/24",
       "162.247.240.0/22",
     ]
 
@@ -10,23 +9,34 @@ locals {
     ]
   }
 
-  apm_domains = {
+  apm_agent_domains = {
+    us = [
+      "collector*.newrelic.com",
+    ]
+
+    eu = [
+      "collector*.eu01.nr-data.net"
+    ]
+  }
+
+  infra_agent_domains = {
     us = [
       "infra-api.newrelic.com",
       "identity-api.newrelic.com",
       "infrastructure-command-api.newrelic.com",
+      "log-api.newrelic.com",
     ]
 
     eu = [
-      "infra-api.eu01.nr-data.net",
+      "infra-api.eu.newrelic.com",
       "identity-api.eu.newrelic.com",
       "infrastructure-command-api.eu.newrelic.com",
+      "log-api.eu.newrelic.com",
     ]
   }
 
   infra = {
     us = [
-      "50.31.164.0/24",
       "162.247.240.0/22",
     ]
 
@@ -61,12 +71,12 @@ locals {
     ]
   }
 
-  ticketing_and_webhooks_us = [
+  api_us = [
     "50.31.164.0/24",
     "162.247.240.0/22",
   ]
 
-  ticketing_and_webhooks_eu = [
+  api_eu = [
     "158.177.65.64/29",
     "159.122.103.184/29",
     "161.156.125.32/28",
@@ -91,6 +101,7 @@ locals {
 
   # Documented at https://docs.newrelic.com/docs/synthetics/new-relic-synthetics/administration/synthetics-public-minion-ips#locations-labels
   # https://s3.amazonaws.com/nr-synthetics-assets/nat-ip-dnsname/production/ip.json
+  # curl --silent https://s3.amazonaws.com/nr-synthetics-assets/nat-ip-dnsname/production/ip.json | jq ' .[] | .[]' | sort | sed  -z 's/\n/,\n/g'
   # Keep this list sorted.
   synthetics_us = [
     "13.114.248.197",
@@ -100,6 +111,9 @@ locals {
     "13.228.39.146",
     "13.237.52.169",
     "13.239.163.169",
+    "13.244.134.146",
+    "13.244.44.41",
+    "13.245.57.13",
     "13.48.110.136",
     "13.48.9.24",
     "13.53.195.221",
@@ -109,6 +123,9 @@ locals {
     "13.56.137.180",
     "13.56.174.59",
     "13.56.215.207",
+    "15.161.119.200",
+    "15.161.69.157",
+    "15.161.87.25",
     "157.175.116.90",
     "157.175.118.77",
     "157.175.21.254",
@@ -135,9 +152,6 @@ locals {
     "3.220.18.219",
     "3.221.145.110",
     "3.221.27.116",
-    "3.9.187.63",
-    "3.9.213.212",
-    "3.9.92.122",
     "34.201.89.115",
     "34.212.63.124",
     "34.216.201.131",
@@ -154,6 +168,9 @@ locals {
     "35.177.31.93",
     "35.178.22.102",
     "35.182.104.198",
+    "3.9.187.63",
+    "3.9.213.212",
+    "3.9.92.122",
     "52.21.22.43",
     "52.36.251.118",
     "52.44.71.247",
@@ -181,16 +198,23 @@ locals {
   ]
 
   # https://s3.amazonaws.com/nr-synthetics-assets/nat-ip-dnsname/eu/ip.json
+  # curl --silent https://s3.amazonaws.com/nr-synthetics-assets/nat-ip-dnsname/eu/ip.json | jq ' .[] | .[]' | sort | sed  -z 's/\n/,\n/g'
   # Keep this list sorted
   synthetics_eu = [
     "13.124.210.74",
     "13.234.196.179",
     "13.235.112.208",
     "13.237.25.50",
+    "13.244.152.204",
+    "13.245.42.49",
+    "13.245.47.145",
     "13.48.119.249",
     "13.48.122.131",
     "13.48.93.230",
     "13.52.82.190",
+    "15.161.170.5",
+    "15.161.19.109",
+    "15.161.30.132",
     "15.188.0.93",
     "15.188.24.216",
     "157.175.106.232",
@@ -209,9 +233,9 @@ locals {
     "3.104.27.23",
     "3.113.168.207",
     "3.114.96.177",
-    "3.13.7.11",
     "3.130.155.242",
     "3.130.159.252",
+    "3.13.7.11",
     "3.209.231.131",
     "3.221.162.190",
     "3.226.130.207",
