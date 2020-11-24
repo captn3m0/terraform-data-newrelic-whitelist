@@ -12,7 +12,7 @@ This is maintained against the following sources:
 ```hcl
 module "newrelic-whitelist" {
   source  = "captn3m0/newrelic-whitelist/data"
-  version = "2020.10.22"
+  version = "2020.11.13"
 }
 
 resource "aws_security_group_rule" "allow_all_to_newrelic" {

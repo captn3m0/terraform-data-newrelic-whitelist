@@ -25,6 +25,7 @@ locals {
       "identity-api.newrelic.com",
       "infrastructure-command-api.newrelic.com",
       "log-api.newrelic.com",
+      "metric-api.newrelic.com"
     ]
 
     eu = [
@@ -32,6 +33,7 @@ locals {
       "identity-api.eu.newrelic.com",
       "infrastructure-command-api.eu.newrelic.com",
       "log-api.eu.newrelic.com",
+      "metric-api.eu.newrelic.com"
     ]
   }
 
