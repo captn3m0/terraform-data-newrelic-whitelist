@@ -15,7 +15,21 @@ locals {
     ]
 
     eu = [
-      "collector*.eu01.nr-data.net"
+      "collector*.eu01.nr-data.net",
+    ]
+  }
+
+  pixie = {
+    common = [
+      "work.withpixie.ai:443",
+    ]
+
+    us = [
+      "otlp.nr-data.net:4317",
+    ]
+
+    eu = [
+      "eu.otlp.nr-data.net:4317",
     ]
   }
 
@@ -25,7 +39,7 @@ locals {
       "identity-api.newrelic.com",
       "infrastructure-command-api.newrelic.com",
       "log-api.newrelic.com",
-      "metric-api.newrelic.com"
+      "metric-api.newrelic.com",
     ]
 
     eu = [
@@ -33,7 +47,7 @@ locals {
       "identity-api.eu.newrelic.com",
       "infrastructure-command-api.eu.newrelic.com",
       "log-api.eu.newrelic.com",
-      "metric-api.eu.newrelic.com"
+      "metric-api.eu.newrelic.com",
     ]
   }
 

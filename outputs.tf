@@ -90,6 +90,7 @@ output "mobile_domains_eu" {
 
 output "synthetics_ips" {
   description = "List of New Relic Synthetic Minion IPs for both US and EU accounts"
+
   value = [
     "${concat(local.synthetics_us, local.synthetics_eu)}",
   ]
@@ -180,4 +181,19 @@ output "webhook_cidrs_us" {
 output "webhook_cidrs_eu" {
   description = "Same as webhook_cidrs, but exclusively for EU accounts"
   value       = ["${local.api_eu}"]
+}
+
+output "pixie_domains" {
+  description = "Domain:Port combinations for Newrelic pixie integration for all customers"
+  value       = ["${concat(local.pixie["common"], local.pixie["us"], local.pixie["eu"])}"]
+}
+
+output "pixie_domains_us" {
+  description = "Domain:Port combinations for Newrelic pixie integration for US region customers"
+  value       = ["${concat(local.pixie["common"], local.pixie["us"])}"]
+}
+
+output "pixie_domains_eu" {
+  description = "Domain:Port combinations for Newrelic pixie integration for EU region customers"
+  value       = ["${concat(local.pixie["common"], local.pixie["eu"])}"]
 }

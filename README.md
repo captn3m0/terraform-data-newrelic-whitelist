@@ -12,7 +12,7 @@ This is maintained against the following sources:
 ```hcl
 module "newrelic-whitelist" {
   source  = "captn3m0/newrelic-whitelist/data"
-  version = "2020.11.13-1"
+  version = "2021.09.11"
 }
 
 resource "aws_security_group_rule" "allow_all_to_newrelic" {
@@ -47,6 +47,9 @@ resource "aws_security_group_rule" "allow_all_to_newrelic" {
 | mobile\_domains | List of all New Relic Mobile Application domains. |
 | mobile\_domains\_eu | List of New Relic Mobile application domains (EU). |
 | mobile\_domains\_us | List of New Relic Mobile Application domains (US). |
+| pixie\_domains | Domain:Port combinations for Newrelic pixie integration for all customers |
+| pixie\_domains\_eu | Domain:Port combinations for Newrelic pixie integration for EU region customers |
+| pixie\_domains\_us | Domain:Port combinations for Newrelic pixie integration for US region customers |
 | synthetics\_cidrs | List of New Relic Synthetic Minion IPs as /32 CIDR for both US and EU accounts |
 | synthetics\_cidrs\_eu | List of New Relic Synthetic Minion IPs as /32 CIDR for EU accounts |
 | synthetics\_cidrs\_us | List of New Relic Synthetic Minion IPs as /32 CIDR for US accounts |
@@ -66,11 +69,18 @@ resource "aws_security_group_rule" "allow_all_to_newrelic" {
 | webhook\_cidrs\_eu | Same as webhook\_cidrs, but exclusively for EU accounts |
 | webhook\_cidrs\_us | Same as webhook\_cidrs, but exclusively for US accounts |
 
+
 # Versioning
 
 This module is versioned as per the New Relic "Last Updated" date on [the docs website](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/networks). The versioning scheme is `YYYY.MM.DD` (with zeros for padding). Changes are usually backwards compatible, but if any breaking changes are made (such as output name changes) between released versions, they will be noted below and in the release notes.
 
 If another release has to be made against the same date, they will be suffixed with a `-1`, or `-2` etc.
+
+## 2021.09.11
+
+## Added
+
+- Domains used by Newrelic Pixie are now supported.
 
 ## 2020.10.22
 
