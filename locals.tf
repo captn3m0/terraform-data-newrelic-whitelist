@@ -51,6 +51,23 @@ locals {
     ]
   }
 
+  opentelemetry = {
+    us = [
+      "otlp.nr-data.net:4317"
+    ]
+    eu = [
+      "otlp.eu01.nr-data.net:4317"
+    ]
+
+    us_cidr = [
+      "162.247.240.0/22"
+    ]
+
+    eu_cidr = [
+      "185.221.84.0/22"
+    ]
+  }
+
   infra = {
     us = [
       "162.247.240.0/22",
