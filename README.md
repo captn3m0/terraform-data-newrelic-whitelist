@@ -7,6 +7,8 @@ This is maintained against the following sources:
 - https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/networks
 - https://docs.newrelic.com/docs/synthetics/synthetic-monitoring/administration/synthetic-public-minion-ips
 
+The list of User-facing domains is not included.
+
 # Usage
 
 ```hcl
