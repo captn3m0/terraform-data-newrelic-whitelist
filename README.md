@@ -7,14 +7,17 @@ This is maintained against the following sources:
 - https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/networks
 - https://docs.newrelic.com/docs/synthetics/synthetic-monitoring/administration/synthetic-public-minion-ips
 
-The list of User-facing domains is not included.
+The following are not included in the module currently, but PRs for the same are welcome:
+
+1. [User-facing domains](https://docs.newrelic.com/docs/using-new-relic/cross-product-functions/install-configure/networks/#user-facing-domains).
+2. [FedRAMP endpoints](https://docs.newrelic.com/docs/security/security-privacy/compliance/fedramp-compliant-endpoints/).
 
 # Usage
 
 ```hcl
 module "newrelic-whitelist" {
   source  = "captn3m0/newrelic-whitelist/data"
-  version = "2021.09.11"
+  version = "2021.09.28"
 }
 
 resource "aws_security_group_rule" "allow_all_to_newrelic" {
@@ -49,6 +52,12 @@ resource "aws_security_group_rule" "allow_all_to_newrelic" {
 | mobile\_domains | List of all New Relic Mobile Application domains. |
 | mobile\_domains\_eu | List of New Relic Mobile application domains (EU). |
 | mobile\_domains\_us | List of New Relic Mobile Application domains (US). |
+| opentelemetry\_cidrs | CIDRs for all OpenTelemetry integrations (both US and EU customers) |
+| opentelemetry\_cidrs\_eu | CIDRs for all OpenTelemetry integrations (For EU only) |
+| opentelemetry\_cidrs\_us | CIDRs for all OpenTelemetry integrations (For US only) |
+| opentelemetry\_origins | Host:Port combinations for all OpenTelemetry integrations (both US and EU customers) |
+| opentelemetry\_origins\_eu | Host:Port combinations for all OpenTelemetry integrations (For EU only) |
+| opentelemetry\_origins\_us | Host:Port combinations for all OpenTelemetry integrations (For US only) |
 | pixie\_domains | Domain:Port combinations for Newrelic pixie integration for all customers |
 | pixie\_domains\_eu | Domain:Port combinations for Newrelic pixie integration for EU region customers |
 | pixie\_domains\_us | Domain:Port combinations for Newrelic pixie integration for US region customers |
@@ -71,18 +80,21 @@ resource "aws_security_group_rule" "allow_all_to_newrelic" {
 | webhook\_cidrs\_eu | Same as webhook\_cidrs, but exclusively for EU accounts |
 | webhook\_cidrs\_us | Same as webhook\_cidrs, but exclusively for US accounts |
 
-
 # Versioning
 
 This module is versioned as per the New Relic "Last Updated" date on [the docs website](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/networks). The versioning scheme is `YYYY.MM.DD` (with zeros for padding). Changes are usually backwards compatible, but if any breaking changes are made (such as output name changes) between released versions, they will be noted below and in the release notes.
 
 If another release has to be made against the same date, they will be suffixed with a `-1`, or `-2` etc.
 
+## 2021.09.28
+
+### Added
+- New outputs for OpenTelemetry Integration; `opentelemetry_origins`,`opentelemetry_origins_us`,`opentelemetry_origins_eu`,`opentelemetry_cidrs`,`opentelemetry_cidrs_us`,`opentelemetry_cidrs_eu`.
+
 ## 2021.09.11
 
 ## Added
-
-- Domains used by Newrelic Pixie are now supported.
+- Domains used by Newrelic Pixie are now supported: : `pixie_domains`,`pixie_domains_us`,`pixie_domains_eu`.
 
 ## 2020.10.22
 
