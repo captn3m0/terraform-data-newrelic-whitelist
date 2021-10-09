@@ -197,3 +197,32 @@ output "pixie_domains_eu" {
   description = "Domain:Port combinations for Newrelic pixie integration for EU region customers"
   value       = ["${concat(local.pixie["common"], local.pixie["eu"])}"]
 }
+
+output "opentelemetry_origins" {
+  description = "Host:Port combinations for all OpenTelemetry integrations (both US and EU customers)"
+  value       = ["${concat(local.opentelemetry["us"], local.opentelemetry["eu"])}"]
+}
+
+output "opentelemetry_origins_us" {
+  description = "Host:Port combinations for all OpenTelemetry integrations (For US only)"
+  value       = ["${local.opentelemetry["us"]}"]
+}
+
+output "opentelemetry_origins_eu" {
+  description = "Host:Port combinations for all OpenTelemetry integrations (For EU only)"
+  value       = ["${local.opentelemetry["eu"]}"]
+}
+output "opentelemetry_cidrs" {
+  description = "CIDRs for all OpenTelemetry integrations (both US and EU customers)"
+  value       = ["${concat(local.opentelemetry["us_cidr"], local.opentelemetry["eu_cidr"])}"]
+}
+
+output "opentelemetry_cidrs_us" {
+  description = "CIDRs for all OpenTelemetry integrations (For US only)"
+  value       = ["${local.opentelemetry["us_cidr"]}"]
+}
+
+output "opentelemetry_cidrs_eu" {
+  description = "CIDRs for all OpenTelemetry integrations (For EU only)"
+  value       = ["${local.opentelemetry["eu_cidr"]}"]
+}
