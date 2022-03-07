@@ -17,7 +17,7 @@ The following are not included in the module currently, but PRs for the same are
 ```hcl
 module "newrelic-whitelist" {
   source  = "captn3m0/newrelic-whitelist/data"
-  version = "2021.09.28"
+  version = "2022.03.07"
 }
 
 resource "aws_security_group_rule" "allow_all_to_newrelic" {
@@ -43,6 +43,7 @@ resource "aws_security_group_rule" "allow_all_to_newrelic" {
 | browser\_domains | List of all New Relic Browser application domains. |
 | browser\_domains\_eu | List of New Relic Browser application domains (EU). |
 | browser\_domains\_us | List of New Relic Browser application domains (US). |
+| codestream\_domains | Wildcard hostnames for Newrelic Codestream |
 | infra\_agent\_domains | In order to report data to New Relic, Infrastructure needs outbound access to these domains (For both US and EU accounts) |
 | infra\_agent\_domains\_eu | In order to report data to New Relic, Infrastructure needs outbound access to these domains (For EU accounts) |
 | infra\_agent\_domains\_us | In order to report data to New Relic, Infrastructure needs outbound access to these domains (For US accounts) |
@@ -85,6 +86,10 @@ resource "aws_security_group_rule" "allow_all_to_newrelic" {
 This module is versioned as per the New Relic "Last Updated" date on [the docs website](https://docs.newrelic.com/docs/apm/new-relic-apm/getting-started/networks). The versioning scheme is `YYYY.MM.DD` (with zeros for padding). Changes are usually backwards compatible, but if any breaking changes are made (such as output name changes) between released versions, they will be noted below and in the release notes.
 
 If another release has to be made against the same date, they will be suffixed with a `-1`, or `-2` etc.
+
+## 2022.03.07
+### Added
+- `codestream_domains` output added
 
 ## 2021.09.28
 

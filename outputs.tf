@@ -226,3 +226,8 @@ output "opentelemetry_cidrs_eu" {
   description = "CIDRs for all OpenTelemetry integrations (For EU only)"
   value       = ["${local.opentelemetry["eu_cidr"]}"]
 }
+
+output "codestream_domains" {
+  description = "Wildcard hostnames for Newrelic Codestream"
+  value = ["${local.codestream_domains}"]
+}

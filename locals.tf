@@ -19,6 +19,14 @@ locals {
     ]
   }
 
+  codestream_domains = [
+    "api.codestream.com",
+    "*.pubnub.com",
+    "*.pubnub.net",
+    "*.pndsn.com",
+    "*.pubnub.io",
+  ]
+
   pixie = {
     common = [
       "work.withpixie.ai:443",
